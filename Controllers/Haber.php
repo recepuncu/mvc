@@ -1,6 +1,6 @@
 <?php
 
-class Haber {
+class Haber extends Controller {
 	
 	public function bak($id){
 		if($id==null){

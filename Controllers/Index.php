@@ -1,10 +1,10 @@
 <?php
 
-class Index {
+class Index extends Controller {
 	
 	function __construct()
 	{
-		echo 'selam kelam';
+		return parent::View();
 	}
-	
+
 }
