@@ -1,5 +1,7 @@
 <?php
 
+include("Controller.php");
+
 class Application
 {	
 	private $controller = null;
@@ -24,10 +26,17 @@ class Application
 		$uri = urldecode($uri);		
 		$url = explode('/',$uri);
 		if(empty($url[0])){
-			$this->controller=$defaultController;
+            $url = explode('/', $defaultController);
+			$this->controller = array_key_exists(0, $url) ? $url[0] : NULL;
+            $this->action = array_key_exists(1, $url) ? $url[1] : 'Index';
+			if(count($url)>=3){
+				for ($i = 2; $i <= (count($url)-1); $i++) {
+					$this->data[] = array_key_exists($i, $url) ? $url[$i] : NULL;
+				}
+			}
 		}elseif(!empty($url[0])){
 			$this->controller = array_key_exists(0, $url) ? $url[0] : NULL;
-			$this->action = array_key_exists(1, $url) ? $url[1] : NULL;
+			$this->action = array_key_exists(1, $url) ? $url[1] : 'Index';
 			if(count($url)>=3){
 				for ($i = 2; $i <= (count($url)-1); $i++) {
 					$this->data[] = array_key_exists($i, $url) ? $url[$i] : NULL;
