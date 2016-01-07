@@ -1,5 +1,9 @@
+@{
+    Title = "Giriş";
+    Layout = null;
+}
 <?php
-	print_r($model);
+	print_r($model);    
 ?>
 <!DOCTYPE html>
 <html>

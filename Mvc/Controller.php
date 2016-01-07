@@ -24,7 +24,16 @@ class Controller {
 		if(!file_exists($viewFile)){
 			die('dosya bulunamadı!');
 		}else{
+            ob_start();
 			include($viewFile);
+            $view = ob_get_clean();
+
+            preg_match_all("|@{(.*)}|s", $view, $matches);
+            $getProperties = explode(';', $matches[1][0]);
+            
+            $pageResult = preg_replace("|@{(.*)}|s", '', $view);            
+            echo $pageResult;            
+            print_r($getProperties);
 		}
 	}
 	
