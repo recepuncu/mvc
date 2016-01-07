@@ -27,7 +27,7 @@ class Controller {
             ob_start();
 			include($viewFile);
             $view = ob_get_clean();
-
+            
             preg_match_all("|@{(.*)}|s", $view, $matches);
             $getProperties = explode(';', $matches[1][0]);
             
