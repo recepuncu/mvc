@@ -4,13 +4,14 @@ class Home extends Controller {
     
 	function Index()
 	{		
-		$model = array('selam','kelam');
+		$model = array('foo','bar');
 		return parent::View($model);
 	}
 	
-	public function Welcome()
-	{
-		echo 'selam kelam';
-	}
+	function Welcome()
+	{		
+		$model = array('foo','bar');
+		return parent::View($model);
+	}	
 
 }

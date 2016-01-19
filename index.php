@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 /**
  * include dependencies
  *  */
-include("Mvc/Application.php");
+include("System/Application.php");
 
 //$app = new Application; //without default controller
 $app = new Application('Home'); //with only default controller
