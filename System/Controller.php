@@ -17,12 +17,27 @@ class Controller {
 		}
 	}
 	
+	public function Model($modelName)
+	{
+		$result=null;
+		$viewName = $this->getCallingObject();
+		$modelFile = "Models/{$modelName}.php";	
+		if(!file_exists($modelFile)){
+			die('model dosyası bulunamadı!');
+		}else{
+            require_once($modelFile);
+			$class = "{$viewName['class']}Model";
+			$result = new $class;
+		}
+		return $result;
+	}	
+	
 	public function View($model=null)
-	{		
+	{
 		$viewName = $this->getCallingObject();
 		$viewFile = "Views/{$viewName['class']}/{$viewName['function']}.php";
 		if(!file_exists($viewFile)){
-			die('dosya bulunamadı!');
+			die('view dosyası bulunamadı!');
 		}else{
             include($viewFile);
 		}
